@@ -1,0 +1,203 @@
+
+#include <iostream>
+#include <vector>
+#include <list>
+
+using namespace std;
+
+class Finance {
+public:
+	void AddtoCard();
+	void AddtoCash(int money);
+	void BuyofCash(int money);
+	void BuyofCard(int money);
+	void SpendingofDay(int money);
+	void SpendingofWeek(int money);
+	void SpendingofMonth(int money);
+private:
+
+	int money;
+	int week;
+	int month;
+	list<int> listadd;
+};
+
+ void AddtoCard(int money,int day, int month) {
+	list<int> listadd;
+	cout << "You added  "<<endl;
+		listadd.push_front(money);
+		listadd.push_back(day);
+		listadd.push_back(month);
+		for (int i : listadd) {
+			cout << i<<endl;
+        }
+
+}
+void AddtoCash (int money) {
+
+	list<int> listadd;
+	cout << "You added  " << endl;
+	listadd.push_front(money);
+
+
+
+}
+void SpendingofDay(list<int> addofmoney) {
+	
+	
+
+
+
+
+
+}
+
+
+void SpendingofMonth(list<int> addofmoney) {
+	int sum = 0;
+	for (int i : addofmoney) {
+		sum += i;
+	}
+
+	cout << "Monthly spending = " << sum << endl;
+
+}
+void CheckCash(list<int> addofmoney, list<int> spendofmoney) {
+	int sumadd = 0;
+	int sumspend = 0;
+	int balance;
+	for (int i : addofmoney) {
+		sumadd += i;
+	}
+	for (int i : spendofmoney) {
+		sumspend += i;
+	}
+	balance = sumadd - sumspend;
+	cout << "Your balance of card = " << balance << endl;
+
+}
+
+void CheckCard(list<int> addofmoney, list<int> spendofmoney) {
+	int sumadd = 0;
+	int sumspend = 0;
+	int balance;
+	for (int i : addofmoney) {
+		sumadd += i;
+	}
+	for (int i : spendofmoney) {
+		sumspend += i;
+	}
+	balance =  sumadd-sumspend  ;
+	cout << "Your balance of card = " <<  balance<< endl;
+
+}
+
+/////
+int BuyCash(int money, list<int> spendmoney) {
+	int sumadd = 0;
+	int balance;
+	for (int i : spendmoney) {
+		sumadd += i;
+	}
+	balance = sumadd + money;
+	return balance;
+}
+int BuyCard(int money, list<int> spendmoney) {
+	int sumadd = 0;
+	int balance;
+	for (int i : spendmoney) {
+		sumadd += i;
+	}
+	balance = sumadd + money;
+	return balance;
+}
+
+
+////
+void CheckCash(list<int> addofmoney, list<int> spendofmoney) {
+	int sumadd = 0;
+	int sumspend = 0;
+	int balance;
+	for (int i : addofmoney) {
+		sumadd += i;
+	}
+	for (int i : spendofmoney) {
+		sumspend += i;
+	}
+	balance = sumadd - sumspend;
+	cout << "Your balance of cash = " << balance << endl;
+
+}
+
+int main()
+{
+	char a;
+	list<int> listearncash;
+	list<int> listspendcash;
+	list<int> listearncard;
+	list<int> listspendcard;
+	int cash,card;
+	int add, spend;
+	int day, month;
+	do {
+		cout << "1.-Adding money by cash" << endl;
+		cout << "2.-Adding money by card" << endl;
+		cout << "3.-Buying in cash" << endl;
+		cout << "4.-buying in card" << endl;
+		cout << "5.-Spending money in a day " << endl;
+		cout << "6.-Spending money in a week " << endl;
+		cout << "7.-Spending money in a month " << endl;
+		cout << "8.-Check balance card" << endl;
+		cout << "9.-Check balance cash" << endl;
+		cin >> a;
+		switch (a) {
+		case '1':
+			cout << "Enter money you want add" << endl;
+			cin >> cash;
+			AddtoCash(cash);
+			listearncash.push_back(cash);
+			break;
+		case '2':
+			cout << "Enter money you want add " << endl;
+			cin >> card;
+			cout << "Enter day "<<endl;
+			cin >> day;
+			cout << "Enter month "<<endl;
+			cin >> month;
+			listearncard.push_back(card);
+			 AddtoCard(card,day,month);
+			break;
+		case '3':
+			cout << "Enter price you spend from cash";
+			cin >> cash;
+			BuyCash(cash, listspendcash);
+			listspendcash.push_back(cash);
+			break;
+		case '4':
+			cout << "Enter price you spend from card";
+			cin >> card;
+			BuyCash(card, listspendcard);
+			listspendcard.push_back(card);
+			break;
+		case '5':
+			//
+			break;
+		case '6':
+			//
+			break;
+		case '7':
+			//
+			break;
+		case '8':
+			CheckCard(listearncard, listspendcard);
+			break;
+		case '9':
+			CheckCash(listearncash, listspendcash);
+			break;
+		}
+
+
+	} while (a != 0);
+
+}
+
